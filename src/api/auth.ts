@@ -4,7 +4,7 @@ export function getAPIKey(headers: IncomingHttpHeaders): string {
   const authHeader = headers["authorization"];
 
   if (!authHeader) {
-    throw new Error("oops");
+    throw new Error("no authorization header included");
   }
 
   const splitAuth = authHeader.split(" ");
