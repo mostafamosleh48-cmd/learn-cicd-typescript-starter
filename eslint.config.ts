@@ -1,5 +1,6 @@
 import Array from "@eslint/js";
 import tseslint from "typescript-eslint";
+import pluginSecurity from "eslint-plugin-security";
 
 export default tseslint.config(
   {
@@ -7,6 +8,8 @@ export default tseslint.config(
   },
   Array.configs.recommended,
   ...tseslint.configs.recommended,
+
+  pluginSecurity.configs.recommended,
   {
     languageOptions: {
       globals: {
@@ -16,6 +19,7 @@ export default tseslint.config(
     },
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
+      "security/detect-eval-with-expression": "error"
     },
   },
 );
