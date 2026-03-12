@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import { exec } from "child_process"; // خطير أمنياً
+
 import { config } from "./config.js";
 import { db } from "./db/index.js";
 import { middlewareAuth } from "./api/middleware.js";
@@ -48,10 +48,3 @@ app.use("/v1", v1Router);
 app.listen(config.api.port, () => {
   console.log(`Server is running on port: ${config.api.port}`);
 });
-
-// الأكواد التالية مضافة خصيصاً لجعل الـ CI يفشل أمنياً:
-const dangerousData = eval("1 + 1");
-console.log(dangerousData);
-
-const command = "ls";
-exec(command); // تحذير أمني: detect-child-process
